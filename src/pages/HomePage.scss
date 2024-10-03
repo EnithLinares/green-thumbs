@@ -35,6 +35,16 @@
     top: 63vh;
   }
 
+  &__popup {
+    display: none;
+    position: absolute;
+    top: -5rem;
+    padding: 0.8rem;
+    background-color: white;
+    border: none;
+    border-radius: 16px;
+  }
+
   &__image {
     max-height: 25rem;
 
@@ -42,4 +52,8 @@
       padding-top: 12rem;
     }
   }
+}
+
+.plants__image:hover + .plants__popup {
+  display: block;
 }

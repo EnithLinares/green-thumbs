@@ -11,7 +11,6 @@ export default function HomePage() {
     try {
       const plantResponse = await axios.get(`http://localhost:8080/plants`);
       setPlants(plantResponse.data);
-      console.log(plantResponse);
     } catch (error) {
       console.error("error fetching plants", error);
     } finally {
@@ -34,15 +33,22 @@ export default function HomePage() {
       </Link>
       <div className="plants__row">
         {plants.map((plant) => (
-          <img
-            key={plant.id}
-            src={`http://localhost:8080/${plant.image}`}
-            className={
-              plant.species === "pothos"
-                ? "plants__image plants__image--offset"
-                : "plants__image"
-            }
-          />
+          <div className="plants__item" key={plant.id}>
+            <img
+              src={`http://localhost:8080/${plant.image}`}
+              className={
+                plant.species === "pothos"
+                  ? "plants__image plants__image--offset"
+                  : "plants__image"
+              }
+            />
+            <div className="plants__popup" id="plants__popup">
+              <h1>{plant.nickname}</h1>
+              <p>{plant.species}</p>
+              <p>water {plant.watering}</p>
+              <p>{plant.sunlight}</p>
+            </div>
+          </div>
         ))}
       </div>
     </section>
