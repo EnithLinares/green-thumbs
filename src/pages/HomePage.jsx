@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./HomePage.scss";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [plants, setPlants] = useState(null);
@@ -28,6 +29,9 @@ export default function HomePage() {
 
   return (
     <section className="plants">
+      <Link to="/new-plant">
+        <button className="plants__button">Add Plant</button>
+      </Link>
       <div className="plants__row">
         {plants.map((plant) => (
           <img
